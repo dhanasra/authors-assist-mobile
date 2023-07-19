@@ -1,7 +1,9 @@
 import "package:flutter/material.dart";
+import "package:mobile/extensions/context_exten.dart";
 
 import "../../base/base_viewmodel.dart";
 import "../../constants/assets_const.dart";
+import "../../routes/routes.dart";
 
 class WelcomeViewModel extends BaseViewModel {
   final BuildContext context;
@@ -47,7 +49,7 @@ class WelcomeViewModel extends BaseViewModel {
       controller.animateToPage(_currentPage, duration: const Duration(milliseconds: 500), curve: Curves.easeIn);
       builder.value = _currentPage;
     }else{
-      // context.navigateTo(Routes.signup);
+      context.navigateTo(Routes.signup);
     }
   }
 

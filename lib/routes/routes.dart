@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mobile/presentation/authentication/bloc/auth_bloc.dart';
+import 'package:mobile/presentation/authentication/pages/signin/signin_view.dart';
+import 'package:mobile/presentation/authentication/pages/signup/signup_view.dart';
 import 'package:page_transition/page_transition.dart';
 
 import '../presentation/splash/splash_view.dart';
@@ -8,6 +12,13 @@ class Routes {
   //welcome
   static const String splash = "/";
   static const String welcome = "/welcome";
+
+  //auth
+  static const String signin = "/signin";
+  static const String signup = "/signup";
+
+  //home
+  static const String home = "/home";
 
 }
 
@@ -23,6 +34,18 @@ class RouteGenerator {
       
       case Routes.welcome:
         return getTransistionPage(const WelcomeView());
+      
+      case Routes.signup:
+        return getTransistionPage(BlocProvider(
+          create: (context) => AuthBloc(),
+          child: const SignUpView(),
+        ));
+
+      case Routes.signin:
+        return getTransistionPage(BlocProvider(
+          create: (context) => AuthBloc(),
+          child: const SignInView(),
+        ));
         
       default:
         return unDefinedRoute();

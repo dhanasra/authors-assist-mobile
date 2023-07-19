@@ -24,4 +24,6 @@ class ColorsConst {
   static const white = Color(0xFFFFFFFF);
   static const whiteLight = Color(0xFFFAFAFA);
 
+  static const facebookBlue = Color(0xFF3D6AD6);
+
 }
