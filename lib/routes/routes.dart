@@ -2,10 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 
 import '../presentation/splash/splash_view.dart';
+import '../presentation/welcome/welcome_view.dart';
 
 class Routes {
   //welcome
   static const String splash = "/";
+  static const String welcome = "/welcome";
+
 }
 
 class RouteGenerator {
@@ -17,6 +20,9 @@ class RouteGenerator {
     switch (settings.name) {
       case Routes.splash:
         return getTransistionPage(const SplashView());
+      
+      case Routes.welcome:
+        return getTransistionPage(const WelcomeView());
         
       default:
         return unDefinedRoute();
