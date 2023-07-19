@@ -10,8 +10,11 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  bot_toast: ^4.0.4
   cupertino_icons: ^1.0.2
   google_fonts: ^5.1.0
+  page_transition: ^2.0.9
+
 
 dev_dependencies:
   flutter_test:
