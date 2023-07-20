@@ -31,7 +31,7 @@ class _SignInViewState extends State<SignInView> {
     return BlocListener<AuthBloc, AuthState>(
       listener: (context, state) {
         if(state is LoginSucess || state is AuthSuccess){
-          context.navigateTo(Routes.home);
+          context.navigateTo(Routes.init);
         }
       },
       child: Scaffold(

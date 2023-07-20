@@ -5,12 +5,14 @@ import '../api_client.dart';
 class AuthService {
 
 
-  Future signupUser(String email, String password)async{
+  Future signupUser(String email, String password, String firstName, String lastName)async{
 
     dynamic response = await ApiClient(ApisConst.signupPath).post(
       data: {
         "email": email,
-        "password": password
+        "password": password,
+        "firstName": firstName,
+        "lastName": lastName
       }
     );
 

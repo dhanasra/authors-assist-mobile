@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:mobile/db/local_db.dart';
 
 import '../constants/urls_const.dart';
 import '../resources/toast.dart';
@@ -62,6 +63,10 @@ class ApiInterceptors extends Interceptor {
     if (loader) showLoader();
     
     options.headers["Content-Type"] = "application/json";
+    var accessToken = LocalDB.getAccessToken();
+    if(accessToken!=null){
+      options.headers["Authorization"] = "Bearer $accessToken";
+    }
 
     if (additionalHeaders != null){
       for (var element in additionalHeaders!.keys) { 
@@ -73,19 +78,19 @@ class ApiInterceptors extends Interceptor {
   }
 
   @override
-  void onError(DioError e, ErrorInterceptorHandler handler) async{
+  void onError(DioException err, ErrorInterceptorHandler handler) async{
     if (loader) hideLoader();
 
-    if (e.response?.data is Map && e.response!.data.containsKey('message')) {
-      if (errToast) toast(e.response?.data['message'], success: false);
+    if (err.response?.data is Map && err.response!.data.containsKey('message')) {
+      if (errToast) toast(err.response?.data['message'], success: false);
     } else {
       if (errToast) toast('Something went wrong !', success: false);
     }
 
-    if(e.response?.statusCode==401){
+    if(err.response?.statusCode==401){
       return;
     }else {
-      return handler.next(e);
+      return handler.next(err);
     }
   }
 
@@ -95,6 +100,17 @@ class ApiInterceptors extends Interceptor {
 
     if(response.data!=null){
       if(response.data['status']=='success'){
+        var data = response.data['data'];
+
+        if(data!=null){
+          if(data['accessToken']!=null){
+            LocalDB.saveAccessToken(data['accessToken']);
+          }
+          if(data['refreshToken']!=null){
+            LocalDB.saveRefreshToken(data['refreshToken']);
+          }
+        }
+
         return handler.next(response);
       }
     }

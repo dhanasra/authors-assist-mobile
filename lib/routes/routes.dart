@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mobile/presentation/authentication/bloc/auth_bloc.dart';
+import 'package:mobile/presentation/authentication/pages/init/init_view.dart';
 import 'package:mobile/presentation/authentication/pages/signin/signin_view.dart';
 import 'package:mobile/presentation/authentication/pages/signup/signup_view.dart';
 import 'package:page_transition/page_transition.dart';
@@ -16,6 +17,7 @@ class Routes {
   //auth
   static const String signin = "/signin";
   static const String signup = "/signup";
+  static const String init = "/init";
 
   //home
   static const String home = "/home";
@@ -45,6 +47,12 @@ class RouteGenerator {
         return getTransistionPage(BlocProvider(
           create: (context) => AuthBloc(),
           child: const SignInView(),
+        ));
+      
+      case Routes.init:
+        return getTransistionPage(BlocProvider(
+          create: (context) => AuthBloc(),
+          child: const InitView(),
         ));
         
       default:

@@ -4,6 +4,9 @@ class AssetsConst {
 
   static const _imagesFolder = 'assets/images';
   static const _logoFolder = 'assets/logo';
+  static const _lottieFolder = 'assets/lottie';
+
+  static const working = '$_lottieFolder/gears.json';
 
   static const welcomeImage1 = '$_imagesFolder/welcome_image_1.png';
   static const welcomeImage2 = '$_imagesFolder/welcome_image_2.png';
