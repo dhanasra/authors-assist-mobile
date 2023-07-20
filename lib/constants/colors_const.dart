@@ -5,6 +5,7 @@ class ColorsConst {
   ColorsConst._();
 
   static const primary = Color(0xFF5861AF);
+  static const primaryLight = Color(0x225861AF);
   static const secondary = Color(0xFF003CC5);
 
   static const text = Color(0xFF062132);
@@ -25,5 +26,7 @@ class ColorsConst {
   static const whiteLight = Color(0xFFFAFAFA);
 
   static const facebookBlue = Color(0xFF3D6AD6);
+
+  static const shadow = Color(0x40000000);
 
 }

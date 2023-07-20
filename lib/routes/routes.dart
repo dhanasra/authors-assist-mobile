@@ -4,6 +4,8 @@ import 'package:mobile/presentation/authentication/bloc/auth_bloc.dart';
 import 'package:mobile/presentation/authentication/pages/init/init_view.dart';
 import 'package:mobile/presentation/authentication/pages/signin/signin_view.dart';
 import 'package:mobile/presentation/authentication/pages/signup/signup_view.dart';
+import 'package:mobile/presentation/home/cubit/home_cubit.dart';
+import 'package:mobile/presentation/home/home_view.dart';
 import 'package:page_transition/page_transition.dart';
 
 import '../presentation/splash/splash_view.dart';
@@ -53,6 +55,12 @@ class RouteGenerator {
         return getTransistionPage(BlocProvider(
           create: (context) => AuthBloc(),
           child: const InitView(),
+        ));
+      
+      case Routes.home:
+        return getTransistionPage(BlocProvider(
+          create: (context) => HomeCubit(),
+          child: const HomeView(),
         ));
         
       default:
