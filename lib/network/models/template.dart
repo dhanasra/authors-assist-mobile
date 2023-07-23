@@ -85,7 +85,7 @@ class Template extends Equatable {
       title,
       helperText,
       fields??'',
-      proFeature??''
+      proFeature
     ];
   }
 }
