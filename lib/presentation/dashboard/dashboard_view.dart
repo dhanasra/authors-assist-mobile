@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mobile/constants/colors_const.dart';
 import 'package:mobile/global.dart';
 import 'package:mobile/presentation/dashboard/widgets/template_item.dart';
 import 'package:mobile/widgets/text_input.dart';
@@ -65,7 +64,7 @@ class _DashboardViewState extends State<DashboardView> {
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 4),
                       child: Text(Global.categories[index], style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                          color: ColorsConst.primary
+                          color: Theme.of(context).primaryColor
                         )),
                     ),
 

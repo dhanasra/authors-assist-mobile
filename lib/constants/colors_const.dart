@@ -5,6 +5,7 @@ class ColorsConst {
   ColorsConst._();
 
   static const primary = Color(0xFF5861AF);
+  static const primaryshade = Color.fromARGB(255, 153, 153, 207);
   static const primaryLight = Color(0x225861AF);
   static const secondary = Color(0xFF003CC5);
 

@@ -23,8 +23,8 @@ class TemplateItem extends StatelessWidget {
         height: 165,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8),
-          boxShadow: ShadowConst.normal,
-          color: Colors.white
+          boxShadow: ShadowConst.normal(context),
+          color: Theme.of(context).scaffoldBackgroundColor
         ),
         padding: const EdgeInsets.all(16),
         child: Column(
@@ -33,12 +33,12 @@ class TemplateItem extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Icon(FontAwesomeIcons.fileLines, size: 20, color: ColorsConst.primary,),
+                Icon(FontAwesomeIcons.fileLines, size: 20, color: Theme.of(context).primaryColor),
     
                 if(template.proFeature)
                 Container(
                   decoration: BoxDecoration(
-                    color: ColorsConst.primary,
+                    color: Theme.of(context).primaryColor,
                     borderRadius: BorderRadius.circular(4)
                   ),
                   padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
@@ -49,7 +49,7 @@ class TemplateItem extends StatelessWidget {
             ),
             const SizedBox(height: 8,),
             Text(template.title, style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-              color: ColorsConst.text1,
+              color: Theme.of(context).colorScheme.tertiary,
               fontSize: 18
             )),
             const SizedBox(height: 8,),

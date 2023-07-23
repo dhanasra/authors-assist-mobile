@@ -81,7 +81,7 @@ class _WelcomeViewState extends State<WelcomeView> {
                     padding: const EdgeInsets.symmetric(horizontal: 8),
                     child: CircleAvatar(
                       radius: 5,
-                      backgroundColor: val == index ? ColorsConst.primary : ColorsConst.greyLight,
+                      backgroundColor: val == index ? Theme.of(context).primaryColor : ColorsConst.greyLight,
                     ),
                   ))
                 ),

@@ -57,7 +57,7 @@ class _SignUpViewState extends State<SignUpView> {
                     onTap: ()=>context.navigateTo(Routes.signin),
                     child: Text('Login',
                         style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                            fontSize: 15, color: ColorsConst.primary)),
+                            fontSize: 15, color: Theme.of(context).primaryColor)),
                   )
                 ],
               ),
@@ -196,7 +196,7 @@ class _SignUpViewState extends State<SignUpView> {
                               .textTheme
                               .bodySmall!
                               .copyWith(
-                                  fontSize: 14, color: ColorsConst.primary)),
+                                  fontSize: 14, color: Theme.of(context).primaryColor)),
                       TextSpan(
                           text: 'and',
                           style: Theme.of(context)
@@ -209,7 +209,7 @@ class _SignUpViewState extends State<SignUpView> {
                               .textTheme
                               .bodySmall!
                               .copyWith(
-                                  fontSize: 14, color: ColorsConst.primary))
+                                  fontSize: 14, color: Theme.of(context).primaryColor))
                     ]),
                   )),
             ],

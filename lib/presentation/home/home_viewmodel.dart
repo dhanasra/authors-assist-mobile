@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:mobile/presentation/settings/settings_view.dart';
 
 import '../../base/base_viewmodel.dart';
 import '../dashboard/dashboard_view.dart';
@@ -21,7 +22,7 @@ class HomeViewModel extends BaseViewModel {
     return [
       const DashboardView(),
       const DashboardView(),
-      const DashboardView()
+      const SettingsView()
     ];
   }
 

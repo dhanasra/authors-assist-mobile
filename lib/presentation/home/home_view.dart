@@ -33,10 +33,10 @@ class _HomeViewState extends State<HomeView> {
             Scaffold(
               bottomNavigationBar: BottomBarContainer(
                   child: BottomNavigationBar(
-                      backgroundColor: ColorsConst.white,
+                      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
                       onTap: (index) => _viewModel.onTap(index),
-                      selectedIconTheme: const IconThemeData(
-                        color: ColorsConst.primary,
+                      selectedIconTheme: IconThemeData(
+                        color: Theme.of(context).primaryColor,
                         size: 24
                       ),
                       unselectedIconTheme: const IconThemeData(

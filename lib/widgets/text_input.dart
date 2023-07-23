@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../constants/colors_const.dart';
 import '../resources/validator.dart';
 
 class TextInput extends StatelessWidget {
@@ -47,7 +46,7 @@ class TextInput extends StatelessWidget {
         .inputDecorationTheme
         .hintStyle!
         .copyWith(
-          color: ColorsConst.text,
+          color: Theme.of(context).appBarTheme.foregroundColor,
           height: maxLines>1 ? 1.5 : 1 
         ),
     );

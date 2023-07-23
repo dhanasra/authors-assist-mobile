@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../../constants/colors_const.dart';
 import '../../../constants/shadow_const.dart';
 
 class BottomBarContainer extends StatelessWidget {
@@ -16,13 +15,9 @@ class BottomBarContainer extends StatelessWidget {
       margin: const EdgeInsets.all(16),
       padding: const EdgeInsets.only(bottom: 6),
       decoration: BoxDecoration(
-        boxShadow: ShadowConst.normal,
-        border: Border.all(
-          color: ColorsConst.border,
-          width: 2
-        ),
+        boxShadow: ShadowConst.normal(context),
         borderRadius: BorderRadius.circular(10),
-        color: ColorsConst.white
+        color: Theme.of(context).scaffoldBackgroundColor
       ),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(10),

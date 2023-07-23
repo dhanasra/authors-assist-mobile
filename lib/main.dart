@@ -10,6 +10,7 @@ void main() async{
 
   await Hive.initFlutter();
   await Hive.openBox('crdenticals');
+  await Hive.openBox('settings');
   OpenAI.apiKey = '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';
 
   runApp(const RestartWidget(child: App()));

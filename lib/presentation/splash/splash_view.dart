@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mobile/constants/assets_const.dart';
-import 'package:mobile/constants/colors_const.dart';
 import 'package:mobile/extensions/context_exten.dart';
 import 'package:mobile/presentation/splash/splash_viewmodel.dart';
 import 'package:mobile/routes/routes.dart';
@@ -48,7 +47,7 @@ class _SplashViewState extends State<SplashView> {
                     style: GoogleFonts.roboto(
                         fontSize: 24,
                         fontWeight: FontWeight.w700,
-                        color: ColorsConst.primary))
+                        color: Theme.of(context).primaryColor))
               ],
             ),
           ],

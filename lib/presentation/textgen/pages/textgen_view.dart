@@ -122,7 +122,7 @@ class _TextGenViewState extends State<TextGenView> {
                     children: [
                       Text(e, style: Theme.of(context).textTheme.bodySmall!.copyWith(
                         fontSize: 18,
-                        color: ColorsConst.text
+                        color: Theme.of(context).appBarTheme.foregroundColor
                       )),
                       const SizedBox(height: 8,),
                       ContentFooter(
