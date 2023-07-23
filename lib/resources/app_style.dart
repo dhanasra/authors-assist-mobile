@@ -28,7 +28,7 @@ class AppStyle {
           fontWeight: FontWeight.w900,
           fontSize: 24,
           height: 1.4,
-          color: ColorsConst.secondary
+          color: ColorsConst.primary
         ),
         titleLarge: GoogleFonts.roboto(
           fontWeight: FontWeight.w600,

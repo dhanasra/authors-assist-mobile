@@ -1,8 +1,12 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:mobile/db/local_db.dart';
+import 'package:mobile/network/services/common_service.dart';
 
 import '../constants/urls_const.dart';
 import '../resources/toast.dart';
+import '../routes/navigation_service.dart';
 
 class ApiClient {
   late Dio dio;
@@ -13,9 +17,9 @@ class ApiClient {
 
   final Map<String, String>? additionalHeaders;
 
-  ApiClient(this.path, {this.loader=true, this.errToast=true,this.additionalHeaders}){
+  ApiClient(this.path, {this.loader=true, this.errToast=true,this.additionalHeaders, String? baseUrl}){
     dio = Dio();
-    dio.options.baseUrl = UrlsConst.apiHostAuth;
+    dio.options.baseUrl = baseUrl ?? UrlsConst.apiHost;
     dio.interceptors.add(ApiInterceptors(
       dio: dio, 
       additionalHeaders: additionalHeaders,
@@ -77,12 +81,31 @@ class ApiInterceptors extends Interceptor {
     return handler.next(options);
   }
 
+  bool isRefreshing = false;
+
   @override
   void onError(DioException err, ErrorInterceptorHandler handler) async{
     if (loader) hideLoader();
+    
+    if(err.response?.statusCode==401){
+      var data = await CommonService().getToken();
+      LocalDB.saveAccessToken(data['accessToken']);
+      LocalDB.saveRefreshToken(data['newRefreshToken']);
+      try {
+        final response = await dio.fetch(err.requestOptions);
+        handler.resolve(response);
+        return;
+      } catch (e) {
+        if (kDebugMode) {
+          print(e);
+        }
+      } finally {
+        isRefreshing = false;
+      }
+    } 
 
     if (err.response?.data is Map && err.response!.data.containsKey('message')) {
-      if (errToast) toast(err.response?.data['message'], success: false);
+      if (errToast) toast(err.response?.data['message'].toString(), success: false);
     } else {
       if (errToast) toast('Something went wrong !', success: false);
     }
@@ -99,10 +122,17 @@ class ApiInterceptors extends Interceptor {
     if (loader) hideLoader();
 
     if(response.data!=null){
+
       if(response.data['status']=='success'){
         var data = response.data['data'];
 
-        if(data!=null){
+        if(data == 'logout'){
+          LocalDB.clearDB();
+          Navigator.of(NavigationService.navigatorKey.currentContext!).popUntil((route) => false);
+          return;
+        }
+
+        if(data!=null && data is Map){
           if(data['accessToken']!=null){
             LocalDB.saveAccessToken(data['accessToken']);
           }

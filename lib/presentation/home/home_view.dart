@@ -31,17 +31,7 @@ class _HomeViewState extends State<HomeView> {
         return Stack(
           children: [
             Scaffold(
-              body: PageView.builder(
-                physics: const NeverScrollableScrollPhysics(),
-                itemCount: _viewModel.getPages(context).length,
-                controller: _viewModel.pageControllerHome,
-                itemBuilder: (_, index) => _viewModel.getPages(context)[index],
-              ),
-            ),
-
-            Align(
-              alignment: Alignment.bottomCenter,
-              child: BottomBarContainer(
+              bottomNavigationBar: BottomBarContainer(
                   child: BottomNavigationBar(
                       backgroundColor: ColorsConst.white,
                       onTap: (index) => _viewModel.onTap(index),
@@ -86,7 +76,13 @@ class _HomeViewState extends State<HomeView> {
                             label: 'Settings')
                       ]),
                 ),
-            )
+              body: PageView.builder(
+                physics: const NeverScrollableScrollPhysics(),
+                itemCount: _viewModel.getPages(context).length,
+                controller: _viewModel.pageControllerHome,
+                itemBuilder: (_, index) => _viewModel.getPages(context)[index],
+              ),
+            ),
           ],
         );
       },

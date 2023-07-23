@@ -2,6 +2,7 @@ import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
 
 import '../resources/app_style.dart';
+import '../routes/navigation_service.dart';
 import '../routes/routes.dart';
 
 class App extends StatelessWidget {
@@ -10,6 +11,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      navigatorKey: NavigationService.navigatorKey,
       debugShowCheckedModeBanner: false,
       builder: BotToastInit(), 
       navigatorObservers: [BotToastNavigatorObserver()],
@@ -19,4 +21,5 @@ class App extends StatelessWidget {
       theme: AppStyle.getApplicationTheme(),
     );
   }
+
 }

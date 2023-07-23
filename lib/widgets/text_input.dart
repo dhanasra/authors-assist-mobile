@@ -6,6 +6,7 @@ import '../resources/validator.dart';
 class TextInput extends StatelessWidget {
   final String hintext;
   final String? suffixText;
+  final String? labelText;
   final TextEditingController controller;
   final String? validatorField;
   final bool isRequired;
@@ -17,6 +18,7 @@ class TextInput extends StatelessWidget {
     super.key,
     required this.hintext,
     this.suffixText,
+    this.labelText,
     this.maxLines = 1,
     required this.controller,
     this.isRequired = true,
@@ -34,6 +36,8 @@ class TextInput extends StatelessWidget {
       maxLines: maxLines,
       decoration: InputDecoration(
         hintText: hintext,
+        labelText: labelText,
+        alignLabelWithHint: true,
         suffixText: suffixText
       ),
       validator: (v)=>isRequired? Validator.validateNonNull(v, label: validatorField) : validateEmail 
@@ -42,7 +46,10 @@ class TextInput extends StatelessWidget {
       style: Theme.of(context)
         .inputDecorationTheme
         .hintStyle!
-        .copyWith(color: ColorsConst.text),
+        .copyWith(
+          color: ColorsConst.text,
+          height: maxLines>1 ? 1.5 : 1 
+        ),
     );
   }
 }
